@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-details',
@@ -14,17 +15,33 @@ export class DetailsComponent implements OnInit {
   isFullscreenBtn:boolean=false;
   isRotate:boolean=true;
   isDownloadBtn:boolean=false;
-
-  constructor(private route: ActivatedRoute) {}
+  
+  jurnyNumber:any;
+  userDetails:any;
+  currentTab="pet1";
+  targetFile=['iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=='];
+  currentIndex:any=0;
+  constructor(private route: ActivatedRoute, private authService: AuthService) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {
       console.log("paramid: ",params['params']['id']);
+      this.jurnyNumber=params['params']['id'];
+      this.authService.getUserDetails(this.jurnyNumber,{}).subscribe((res)=>{
+         console.log(res);
+         this.userDetails=res;
+      });
     });
   }
-
-  toggleleftTab(item){
+  
+  toggleTabs(key){
+    this.currentTab=key;
+  }
+  toggleleftTab(item,index){
     console.log("tab: ",item);
+    this.targetFile=[];
+    this.targetFile.push(item['file']);
+    this.currentIndex=index;
   }
   leftArrowEvent(item,param){
     console.log("left: ",item + ", "+param);

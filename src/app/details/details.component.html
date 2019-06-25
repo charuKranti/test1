@@ -2,14 +2,14 @@
 <div class="container-flull">
    <ul class="breadcrum">
       <li><a [routerLink]="['/home']">Home</a></li>
-      <li>Jurney number 8102203</li>
+      <li>Jurney number {{jurnyNumber}}</li>
     </ul>
 </div>
-<div class="container-fluid">
+<div class="container-flull">
     <div class="row">
         <div class="col-sm-6 col-md-6">
-            <h1>Jurney Number 8102203</h1>
-            <strong>Assigned to Weissert, john (u345678) </strong>
+            <h1>Jurney Number {{jurnyNumber}}</h1>
+            <strong>{{userDetails?.AssingedTO}} </strong>
         </div>
         <div class="col-sm-6 col-md-6 text-right">
             <button class="btn btn-primary width-200">Save updates</button>
@@ -18,76 +18,74 @@
     <div class="empty-space2"></div>
     <div>
         <ul class="nav nav-pills">
-            <li class="nav-item">
-                <a class="nav-link active">Pet1 (2 of 4 uploaded)</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link">Pet2 (3 of 4 uploaded)</a>
+            <li class="nav-item" *ngFor="let key of userDetails?.dataList | keys;let i=index;">
+                <a class="nav-link" [ngClass]="currentTab===key ? 'active' : ''" (click)="toggleTabs(key)">
+                    Pet {{i+1}} ({{userDetails?.dataList[key]?.uploadStatus.split('/')[0]}} of {{userDetails?.dataList[key]?.uploadStatus.split('/')[1]}} uploaded)
+                </a>
             </li>
         </ul>
     </div>
     
-<div class="empty-space"></div>
+    <div class="empty-space"></div>
     <div class="tab-section">
-        <div class="left-section">
-            <ul class="list-group">
-                <li class="list-group-item active" (click)="toggleleftTab(1)">Closup picture</li>
-                <li class="list-group-item" (click)="toggleleftTab(2)">Create picture</li>
-                <li class="list-group-item" (click)="toggleleftTab(3)">Health Certificate</li>
-                <li class="list-group-item" (click)="toggleleftTab(4)">Aknowledgement form</li>
-            </ul>
-        </div>
-        <div class="right-section clearfix">
-            <div class="row">
-                <div class="col-md-8">
-                    <app-image-viewer 
-			[zoomInButton]="isZoomInBtn" 
-			[zoomOutButton]="isZoomOutBtn" 
-			[fullscreen]="isFullscreenBtn" 
-			[rotate]="isRotate" 
-			[resetZoom]="isResetZoom" 
-			(onPrevious)="leftArrowEvent($event,'your data 1')" 
-			(onNext)="rightArrowEvent($event,'your data 2')" 
-			[download]="isDownloadBtn" 
-			[images]="['iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==','https://picsum.photos/900/500/?random']" 
-			[idContainer]="'idOnHTML'" 
-			[loadOnInit]="true"></app-image-viewer>
-                </div>
-                <div class="col-md-4">
-                    <table class="table table-borderless row-table">
-                        <tbody>
-                            <tr>
-                                <td>Uploaded</td>
-                                <td>OCR reviewed</td>
-                                <td>Last modified</td>
-                                <td>midified by</td>
-                            </tr>
-                            <tr>
-                                <td class="strong">02/16/2019</td>
-                                <td class="strong">95% approved</td>
-                                <td class="strong">02/16/2019</td>
-                                <td class="strong">u35242</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <div class="form-group sm-width">
-                        <label>Status</label>
-                        <select class="form-control" id="sel1" name="sellist1">
-                            <option selected value="">Change status of document</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                        </select>
+        <div *ngFor="let key of userDetails?.dataList | keys;let i=index;" [ngClass]="currentTab===key?'active':'fade d-none'">
+            <div class="left-section">
+                <ul class="list-group">
+                    <li [ngClass]="currentIndex===ind ? 'active' : ''"  class="list-group-item" (click)="toggleleftTab(item,ind)" *ngFor="let item of userDetails?.dataList[key]?.doctypes;let ind=index;">{{item?.docName}}</li>
+                </ul>
+            </div>
+            <div class="right-section clearfix">
+                <div class="row">
+                    <div class="col-md-8">
+                        <app-image-viewer 
+                [zoomInButton]="isZoomInBtn" 
+                [zoomOutButton]="isZoomOutBtn" 
+                [fullscreen]="isFullscreenBtn" 
+                [rotate]="isRotate" 
+                [resetZoom]="isResetZoom" 
+                (onPrevious)="leftArrowEvent($event,'your data 1')" 
+                (onNext)="rightArrowEvent($event,'your data 2')" 
+                [download]="isDownloadBtn" 
+                [images]="targetFile" 
+                [idContainer]="'imageView_'+i" 
+                [loadOnInit]="true"></app-image-viewer>
                     </div>
+                    <div class="col-md-4 paddingR0">
+                        <table class="table table-borderless row-table">
+                            <tbody>
+                                <tr>
+                                    <td>Uploaded</td>
+                                    <td>OCR reviewed</td>
+                                    <td>Last modified</td>
+                                    <td>midified by</td>
+                                </tr>
+                                <tr>
+                                    <td class="strong">{{userDetails?.dataList[key]?.doctypes[currentIndex]?.uploadedOn}}</td>
+                                    <td class="strong">{{userDetails?.dataList[key]?.doctypes[currentIndex]?.reviewed}}</td>
+                                    <td class="strong">{{userDetails?.dataList[key]?.doctypes[currentIndex]?.lastModified}}</td>
+                                    <td class="strong">{{userDetails?.dataList[key]?.doctypes[currentIndex]?.modifiedBy}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
-                    <div class="scroll-grid-box">
-                        <article>
-                            <p class="small-text">February 20,2019</p>
-                            <p class="sm-large-text">Picture uploaded; view previous picture <a href="javascript:void(0)">here.</a></p>
-                        </article>
+                        <div class="form-group sm-width">
+                            <label>Status</label>
+                            <select class="form-control" id="sel1" name="sellist1">
+                                <option selected value="">Change status of document</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
+                        </div>
+
+                        <div class="scroll-grid-box">
+                            <article>
+                                <p class="small-text">February 20,2019</p>
+                                <p class="sm-large-text">Picture uploaded; view previous picture <a href="javascript:void(0)">here.</a></p>
+                            </article>
+                        </div>
+
                     </div>
-
                 </div>
             </div>
         </div>

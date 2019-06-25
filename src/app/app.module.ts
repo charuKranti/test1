@@ -12,6 +12,7 @@ import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { RecordsListComponent } from './records-list/records-list.component';
 import { DetailsComponent } from './details/details.component';
+import { KeysPipe } from './keys.pipe';
 
 const appRoute: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/records' },
@@ -27,7 +28,8 @@ const appRoute: Routes = [
     HeaderComponent,
     LoginComponent,
     RecordsListComponent,
-    DetailsComponent
+    DetailsComponent,
+    KeysPipe
   ],
   imports: [
     BrowserModule,

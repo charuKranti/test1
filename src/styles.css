@@ -4,7 +4,7 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 app-header:not(.hidden),
 app-root,app-details,app-records-list,app-login{display:block}
-.container-flull{padding-left:80px;padding-right:80px}
+.container-flull{padding-left: 70px;padding-right: 70px;}
 .strong{font-weight:500}
 
 .image-gallery-2 {

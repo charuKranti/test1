@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { Observable} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
@@ -18,5 +18,10 @@ export class AuthService {
 
   logout() {
     this.isLoggedIn = false;
+  }
+  
+  // user details based on jurney number
+  getUserDetails(id,data): Observable<any>{
+    return this.http.post<any>('http://localhost:4546/api/user/jurneydetails/'+id,data);
   }
 }

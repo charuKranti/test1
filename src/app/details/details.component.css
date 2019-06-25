@@ -1,7 +1,7 @@
 .container-fluid{padding-left:80px;padding-right:80px}
 h1{margin:0px}
 .small-text{font-size:10px;margin-bottom:5px}
-.sm-large-text{font-size:14px;font-weight:500}
+.sm-large-text{font-size:13px;font-weight:500}
 .left-section{width:230px;display: inline-block;padding-right: 15px;vertical-align: top;}
 .right-section{width: calc(100% - 250px);display: inline-block;vertical-align: top;padding-left: 15px}
 .nav-pills{border-bottom:2px solid blue}
@@ -17,5 +17,6 @@ h1{margin:0px}
 .list-group .list-group-item:hover::before{content:"";position: absolute;top: 0;left: 0;bottom: 0;border-left: 3px solid blue}
 
 /*right table css in details page*/
-.row-table td{padding:0px}
-
+.row-table td{padding:0px; font-size: 12px;padding-bottom: 2px;}
+.paddingR0{padding-right: 0px !important;}
+.elementHide{display: none !important}
