@@ -1,36 +1,93 @@
-<p>
-  details works!
-</p>
-
+<div class="empty-space2"></div>
+<div class="container-flull">
+   <ul class="breadcrum">
+      <li><a [routerLink]="['/home']">Home</a></li>
+      <li>Jurney number 8102203</li>
+    </ul>
+</div>
 <div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6 col-md-6">
+            <h1>Jurney Number 8102203</h1>
+            <strong>Assigned to Weissert, john (u345678) </strong>
+        </div>
+        <div class="col-sm-6 col-md-6 text-right">
+            <button class="btn btn-primary width-200">Save updates</button>
+        </div>
+    </div>
+    <div class="empty-space2"></div>
     <div>
         <ul class="nav nav-pills">
             <li class="nav-item">
-                <a class="nav-link active">Pet1 </a>
+                <a class="nav-link active">Pet1 (2 of 4 uploaded)</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link">Pet2</a>
+                <a class="nav-link">Pet2 (3 of 4 uploaded)</a>
             </li>
         </ul>
     </div>
-    <div class="empty-space"></div>
-    <div class="tab-section" >
+    
+<div class="empty-space"></div>
+    <div class="tab-section">
         <div class="left-section">
             <ul class="list-group">
-                <li class="list-group-item active">Closup picture</li>
-                <li class="list-group-item">Create picture</li>
-                <li class="list-group-item">Health Certificate</li>
+                <li class="list-group-item active" (click)="toggleleftTab(1)">Closup picture</li>
+                <li class="list-group-item" (click)="toggleleftTab(2)">Create picture</li>
+                <li class="list-group-item" (click)="toggleleftTab(3)">Health Certificate</li>
+                <li class="list-group-item" (click)="toggleleftTab(4)">Aknowledgement form</li>
             </ul>
         </div>
         <div class="right-section clearfix">
             <div class="row">
                 <div class="col-md-8">
-                    <app-image-viewer [images]="['iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==', 'https://picsum.photos/900/500/?random']"
-    [idContainer]="'idOnHTML'"
-    [loadOnInit]="true"></app-image-viewer>
+                    <app-image-viewer 
+			[zoomInButton]="isZoomInBtn" 
+			[zoomOutButton]="isZoomOutBtn" 
+			[fullscreen]="isFullscreenBtn" 
+			[rotate]="isRotate" 
+			[resetZoom]="isResetZoom" 
+			(onPrevious)="leftArrowEvent($event,'your data 1')" 
+			(onNext)="rightArrowEvent($event,'your data 2')" 
+			[download]="isDownloadBtn" 
+			[images]="['iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==','https://picsum.photos/900/500/?random']" 
+			[idContainer]="'idOnHTML'" 
+			[loadOnInit]="true"></app-image-viewer>
                 </div>
                 <div class="col-md-4">
-                sdfsdfsd
+                    <table class="table table-borderless row-table">
+                        <tbody>
+                            <tr>
+                                <td>Uploaded</td>
+                                <td>OCR reviewed</td>
+                                <td>Last modified</td>
+                                <td>midified by</td>
+                            </tr>
+                            <tr>
+                                <td class="strong">02/16/2019</td>
+                                <td class="strong">95% approved</td>
+                                <td class="strong">02/16/2019</td>
+                                <td class="strong">u35242</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="form-group sm-width">
+                        <label>Status</label>
+                        <select class="form-control" id="sel1" name="sellist1">
+                            <option selected value="">Change status of document</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                        </select>
+                    </div>
+
+                    <div class="scroll-grid-box">
+                        <article>
+                            <p class="small-text">February 20,2019</p>
+                            <p class="sm-large-text">Picture uploaded; view previous picture <a href="javascript:void(0)">here.</a></p>
+                        </article>
+                    </div>
+
                 </div>
             </div>
         </div>
