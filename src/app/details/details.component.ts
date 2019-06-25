@@ -43,12 +43,23 @@ export class DetailsComponent implements OnInit {
     this.targetFile.push(item['file']);
     this.currentIndex=index;
   }
-  leftArrowEvent(item,param){
-    console.log("left: ",item + ", "+param);
+  leftArrowEvent(item,key){
+    if(this.currentIndex >= 1 ){
+      this.currentIndex--;
+      this.currentIndex=this.currentIndex;
+      this.targetFile=[];
+      this.targetFile.push(this.userDetails.dataList[key].doctypes[this.currentIndex]['file']);
+    }
   };
 
-  rightArrowEvent(item,param){
-    console.log("right: ",item + ", "+param);
+  rightArrowEvent(item,key){
+    if(this.currentIndex+2 <= (this.userDetails.dataList[key].doctypes.length ){
+      this.currentIndex++;
+      this.currentIndex=this.currentIndex;
+      this.targetFile=[];
+      this.targetFile.push(this.userDetails.dataList[key].doctypes[this.currentIndex]['file']);
+    }
+    
   };
   
   
