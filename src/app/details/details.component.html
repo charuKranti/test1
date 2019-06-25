@@ -36,15 +36,15 @@
             </div>
             <div class="right-section clearfix">
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-8" *ngIf="targetFile.length">
                         <app-image-viewer 
                 [zoomInButton]="isZoomInBtn" 
                 [zoomOutButton]="isZoomOutBtn" 
                 [fullscreen]="isFullscreenBtn" 
                 [rotate]="isRotate" 
                 [resetZoom]="isResetZoom" 
-                (onPrevious)="leftArrowEvent($event,'your data 1')" 
-                (onNext)="rightArrowEvent($event,'your data 2')" 
+                (onPrevious)="leftArrowEvent($event,key)" 
+                (onNext)="rightArrowEvent($event,key)" 
                 [download]="isDownloadBtn" 
                 [images]="targetFile" 
                 [idContainer]="'imageView_'+i" 
