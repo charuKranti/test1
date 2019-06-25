@@ -2,18 +2,38 @@
   details works!
 </p>
 
-<div class="container-fluid" style="padding-left:80px;padding-right:80px">
-  <div>
-      <ul class="nav nav-pills">
-        <li class="nav-item">
-          <a class="nav-link active">Pet1 </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link">Pet2</a>
-        </li>
-      </ul>
-  </div>
-<app-image-viewer [images]="['iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==', 'https://picsum.photos/900/500/?random']"
-[idContainer]="'idOnHTML'"
-[loadOnInit]="true"></app-image-viewer>
+<div class="container-fluid">
+    <div>
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link active">Pet1 </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link">Pet2</a>
+            </li>
+        </ul>
+    </div>
+    <div class="empty-space"></div>
+    <div class="tab-section" >
+        <div class="left-section">
+            <ul class="list-group">
+                <li class="list-group-item active">Closup picture</li>
+                <li class="list-group-item">Create picture</li>
+                <li class="list-group-item">Health Certificate</li>
+            </ul>
+        </div>
+        <div class="right-section clearfix">
+            <div class="row">
+                <div class="col-md-8">
+                    <app-image-viewer [images]="['iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==', 'https://picsum.photos/900/500/?random']"
+    [idContainer]="'idOnHTML'"
+    [loadOnInit]="true"></app-image-viewer>
+                </div>
+                <div class="col-md-4">
+                sdfsdfsd
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>

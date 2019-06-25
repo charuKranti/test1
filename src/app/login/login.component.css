@@ -1,0 +1,4 @@
+.nav-pills{border-bottom:2px solid blue}
+.nav-pills .nav-item{cursor:pointer;margin-right: 5px;}
+.nav-pills .nav-item .nav-link{border-radius: .25rem .25rem 0px 0px;}
+.nav-pills .nav-item .nav-link:not(.active){background-color:#e2e2e2}

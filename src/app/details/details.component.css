@@ -1,4 +1,12 @@
+.container-fluid{padding-left:80px;padding-right:80px}
+.left-section{width:250px;display: inline-block;padding-right: 15px;vertical-align: top;}
+.right-section{width: calc(100% - 250px);display: inline-block;vertical-align: top;padding-left: 15px}
+.empty-space{padding: 16px}
 .nav-pills{border-bottom:2px solid blue}
 .nav-pills .nav-item{cursor:pointer;margin-right: 5px;}
 .nav-pills .nav-item .nav-link{border-radius: .25rem .25rem 0px 0px;}
 .nav-pills .nav-item .nav-link:not(.active){background-color:#e2e2e2}
+.list-group .list-group-item.active, 
+.list-group .list-group-item:hover{background-color:lightblue;position: relative;color: #000}
+.list-group .list-group-item.active::before,
+.list-group .list-group-item:hover::before{content:"";position: absolute;top: 0;left: 0;bottom: 0;border-left: 3px solid blue}

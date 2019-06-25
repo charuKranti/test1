@@ -4,3 +4,11 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 app-header:not(.hidden),
 app-root,app-details,app-records-list,app-login{display:block}
+.image-gallery-2 {
+    max-height: 500px;
+    margin-top: 0px;
+}
+.image-gallery-2 .image-container + .inline-icon {
+    position: absolute;
+    bottom: 0;
+}
