@@ -53,7 +53,7 @@ export class DetailsComponent implements OnInit {
   };
 
   rightArrowEvent(item,key){
-    if(this.currentIndex+2 <= (this.userDetails.dataList[key].doctypes.length ){
+    if(this.currentIndex+2 <= (this.userDetails.dataList[key].doctypes.length)){
       this.currentIndex++;
       this.currentIndex=this.currentIndex;
       this.targetFile=[];
