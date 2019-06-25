@@ -4,11 +4,84 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 app-header:not(.hidden),
 app-root,app-details,app-records-list,app-login{display:block}
+.container-flull{padding-left:80px;padding-right:80px}
+.strong{font-weight:500}
+
 .image-gallery-2 {
     max-height: 500px;
     margin-top: 0px;
+    background-color: #fff;
+    border: 1px solid #ccc;
 }
 .image-gallery-2 .image-container + .inline-icon {
     position: absolute;
     bottom: 0;
+    background-color: #fff !important;
+    padding: 8px;
 }
+.image-gallery-2 .footer-info{display:none !important}
+.image-gallery-2 .inline-icon > div:first-child {
+    display: none;
+}
+.image-gallery-2 .image-container {
+    bottom: 45px;
+    background-color: #fff;
+    border: none;
+}
+.iv-snap-view{display:none !important}
+.options-image-viewer a i.material-icons.footer-icon {
+    color: #000 !important;
+}
+.width-200{min-width: 200px;}
+.sm-width{width: 250px;}
+
+
+/* Breadcrumb css Start */
+
+ul.breadcrum {
+  padding: 10px 16px;
+  list-style: none;
+  padding-left: 0;
+}
+ul.breadcrum li {
+  display: inline;
+  font-size: 16px;
+  color:#cfc9c9;
+}
+ul.breadcrum li+li:before {
+  padding: 8px;
+  color: #0275d8;
+  content: ">\00a0";
+  position:relative;
+  top:1px;
+}
+ul.breadcrum li a {
+  color: #0275d8;
+  text-decoration: none;
+}
+ul.breadcrum li a:hover {
+  color: #01447e;
+  text-decoration: underline;
+}
+/* Breadcrumb css End */
+
+.empty-space{padding: 16px}
+.empty-space2{padding: 20px}
+
+/* form select css */
+select {
+	
+
+	/* Here's the code we need 
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	 -o-appearance: none;
+		appearance: none;*/
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+.scroll-grid-box{border:1px solid #ccc;min-height:300px;padding:15px}
