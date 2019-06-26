@@ -7,28 +7,46 @@ app-root,app-details,app-records-list,app-login{display:block}
 .container-flull{padding-left: 70px;padding-right: 70px;}
 .strong{font-weight:500}
 
-.image-gallery-2 {
+.file-viewer .image-gallery-2 {
     max-height: 500px;
     margin-top: 0px;
     background-color: #fff;
     border: 1px solid #ccc;
 }
-.image-gallery-2 .image-container + .inline-icon {
-    position: absolute;
-    bottom: 0;
+.file-viewer .image-gallery-2 .image-container + .inline-icon {
     background-color: #fff !important;
     padding: 8px;
+}
+.file-viewer .image-gallery-2 .image-container + .inline-icon{
+    position: absolute;
+    bottom: 0;
 }
 .image-gallery-2 .footer-info{display:none !important}
 .image-gallery-2 .inline-icon > div:first-child {
     display: none;
 }
-.image-gallery-2 .image-container {
+.file-viewer .image-gallery-2 .image-container {
     bottom: 45px;
     background-color: #fff;
     border: none;
 }
-.iv-snap-view{display:none !important}
+.file-viewer .iv-snap-view{display:none !important}
+.modal-header {
+    color: #fff;
+    background-color: rgb(1, 118, 189);
+    padding: 2px 15px;
+}
+.modal-body .image-gallery-2 .image-container {background-color: #fff;bottom: 0;}
+.modal-body .image-gallery-2 {
+    max-height: 500px;
+    background: #fff;
+}
+button.showZoom {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+}
 .options-image-viewer a i.material-icons.footer-icon {
     color: #000 !important;
 }
@@ -70,18 +88,27 @@ ul.breadcrum li a:hover {
 
 /* form select css */
 select {
-	
-
-	/* Here's the code we need 
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	-ms-appearance: none;
-	 -o-appearance: none;
-		appearance: none;*/
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   -ms-appearance: none;
+   -o-appearance: none;
+   appearance: none;
+   padding-right: 20px;
+   box-shadow: none !important;
+   -webkit-box-shadow: none !important;
+   -ms-box-shadow: none !important;
 }
-
+.select-wraper{position:relative}
+.select-wraper i.material-icons.select-arrow {
+    position: absolute;
+    top: 15%;
+    right: 0;
+    pointer-events: none;
+}
 select::-ms-expand {
   display: none;
 }
 
 .scroll-grid-box{border:1px solid #ccc;min-height:300px;padding:15px}
+label{color: #9E9E9E;font-size: 13px;}
+select{font-size: 13px !important;}

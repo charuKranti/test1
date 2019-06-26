@@ -1,4 +1,4 @@
-<div class="empty-space2"></div>
+<div class="empty-space2"></div>
 <div class="container-flull">
    <ul class="breadcrum">
       <li><a [routerLink]="['/home']">Home</a></li>
@@ -28,7 +28,8 @@
     
     <div class="empty-space"></div>
     <div class="tab-section">
-        <div *ngFor="let key of userDetails?.dataList | keys;let i=index;" [ngClass]="currentTab===key?'active':'fade d-none'">
+        <ng-container *ngFor="let key of userDetails?.dataList | keys;let i=index;">
+          <div class="tab-view-item" *ngIf="currentTab===key">
             <div class="left-section">
                 <ul class="list-group">
                     <li [ngClass]="currentIndex===ind ? 'active' : ''"  class="list-group-item" (click)="toggleleftTab(item,ind)" *ngFor="let item of userDetails?.dataList[key]?.doctypes;let ind=index;">{{item?.docName}}</li>
@@ -36,19 +37,25 @@
             </div>
             <div class="right-section clearfix">
                 <div class="row">
-                    <div class="col-md-8" *ngIf="targetFile.length">
-                        <app-image-viewer 
-                [zoomInButton]="isZoomInBtn" 
-                [zoomOutButton]="isZoomOutBtn" 
-                [fullscreen]="isFullscreenBtn" 
-                [rotate]="isRotate" 
-                [resetZoom]="isResetZoom" 
-                (onPrevious)="leftArrowEvent($event,key)" 
-                (onNext)="rightArrowEvent($event,key)" 
-                [download]="isDownloadBtn" 
-                [images]="targetFile" 
-                [idContainer]="'imageView_'+i" 
-                [loadOnInit]="true"></app-image-viewer>
+                    <div class="col-md-8 file-viewer">
+			<button class="showZoom" (click)="showZoomModal()">openModal</button>
+                      <ng-container *ngFor="let item of userDetails?.dataList[key]?.doctypes;let keyIndex=index;">
+                          <app-image-viewer 
+                            [zoomInButton]="isZoomInBtn" 
+                            [zoomOutButton]="isZoomOutBtn" 
+                            [fullscreen]="isFullscreenBtn" 
+                            [rotate]="isRotate" 
+                            [resetZoom]="isResetZoom" 
+                            (onPrevious)="leftArrowEvent($event,key)" 
+                            (onNext)="rightArrowEvent($event,key)" 
+                            [download]="isDownloadBtn" 
+                            [images]="[userDetails.dataList[key].doctypes[keyIndex]['file']]" 
+                            [idContainer]="'imageView_'+keyIndex+key" 
+                            [loadOnInit]="true" *ngIf="currentIndex === keyIndex">
+                            </app-image-viewer>
+                      </ng-container>
+                        
+                        
                     </div>
                     <div class="col-md-4 paddingR0">
                         <table class="table table-borderless row-table">
@@ -69,26 +76,63 @@
                         </table>
 
                         <div class="form-group sm-width">
-                            <label>Status</label>
+                          <label>Status</label>
+                          <div class="select-wraper">
                             <select class="form-control" id="sel1" name="sellist1">
-                                <option selected value="">Change status of document</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
+                              <option selected value="">Change status of document</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
                             </select>
+                            <i class="material-icons select-arrow" style="">keyboard_arrow_down</i>
+                          </div>
                         </div>
-
+			                  <label>Activity log on document</label>
                         <div class="scroll-grid-box">
-                            <article>
-                                <p class="small-text">February 20,2019</p>
-                                <p class="sm-large-text">Picture uploaded; view previous picture <a href="javascript:void(0)">here.</a></p>
+                            <article *ngFor="let logitem of userDetails?.dataList[key]?.doctypes[currentIndex]?.activityLog">
+                                <p class="small-text">{{logitem.date}}</p>
+                                <p class="sm-large-text">{{logitem.logText}} <a *ngIf="logitem.link" href="{{logitem.link}}">here.</a></p>
                             </article>
                         </div>
 
                     </div>
                 </div>
             </div>
-        </div>
+            <!-- modal area start -->
+            <div class="modal-backdrop fade show" *ngIf="isModalShow"></div>
+            <div class="modal fade show d-block" style="padding-right:17px" *ngIf="isModalShow">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <h4 class="modal-title">{{key}}</h4>
+                    <button type="button" class="close" (click)="closeZoomModal(isModalShow)">&times;</button>
+                  </div>
+                  
+                  <!-- Modal body -->
+                  <div class="modal-body">
+                    <app-image-viewer 
+                      [zoomInButton]="isZoomInBtn" 
+                      [zoomOutButton]="isZoomOutBtn" 
+                      [fullscreen]="isFullscreenBtn" 
+                      [rotate]="isRotate" 
+                      [resetZoom]="isResetZoom" 
+                      (onPrevious)="leftArrowEvent($event,key)" 
+                      (onNext)="rightArrowEvent($event,key)" 
+                      [download]="isDownloadBtn" 
+                      [images]="[targetFile]" 
+                      [idContainer]="'imageViewModal_'+key" 
+                      [loadOnInit]="true" *ngIf="targetFile.length">
+                      </app-image-viewer>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- modal area end -->
+          </div>
+        </ng-container>
+        
     </div>
 
 </div>

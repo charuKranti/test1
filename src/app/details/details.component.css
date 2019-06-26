@@ -2,14 +2,14 @@
 h1{margin:0px}
 .small-text{font-size:10px;margin-bottom:5px}
 .sm-large-text{font-size:13px;font-weight:500}
-.left-section{width:230px;display: inline-block;padding-right: 15px;vertical-align: top;}
-.right-section{width: calc(100% - 250px);display: inline-block;vertical-align: top;padding-left: 15px}
+.left-section{width:220px;display: inline-block;padding-right: 15px;vertical-align: top;}
+.right-section{width: calc(100% - 220px);display: inline-block;vertical-align: top;padding-left: 15px}
 .nav-pills{border-bottom:2px solid blue}
 .nav-pills .nav-item{cursor:pointer;margin-right: 5px;}
 .nav-pills .nav-item .nav-link{border-radius: .25rem .25rem 0px 0px;min-width:150px;}
 .nav-pills .nav-item .nav-link:not(.active){background-color:#e2e2e2}
 .nav-pills .nav-item .nav-link.active{color:#fff !important}
-.list-group .list-group-item{font-weight:500;cursor:pointer}
+.list-group .list-group-item{font-weight:500;cursor:pointer;font-size:14px;}
 .list-group .list-group-item.active{border-color:#ccc}
 .list-group .list-group-item.active, 
 .list-group .list-group-item:hover{background-color:lightblue;position: relative;color: #000;}
